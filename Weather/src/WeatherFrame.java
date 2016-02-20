@@ -118,14 +118,15 @@ public class WeatherFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OpenMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenMenuItemActionPerformed
-        // TODO add your handling code here:
         int returnVal = fc.showOpenDialog(this);
         
         if ( returnVal == JFileChooser.APPROVE_OPTION )
         {
             File file = fc.getSelectedFile();
             //This is where a real application would open the file.
-            System.out.println("Opening: " + file.getAbsoluteFile() + ".");
+            //System.out.println("Opening: " + file.getAbsoluteFile() + ".");
+            XmlReader filereader = new XmlReader();
+            filereader.ReadFile(file.getAbsoluteFile().toString());
         }
         else
         {

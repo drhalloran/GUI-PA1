@@ -1,5 +1,6 @@
 
 import java.awt.List;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,15 +38,8 @@ public class XmlReader {
         //HashMap WeatherData = new HashMap();
     }
     
-    public void ReadFile( String filePath )
+    public boolean ReadFile( String filePath )
     {
-        // check usage
-        if ( filePath.isEmpty() )
-        {
-            System.out.println( "Usage: java ReadXML1 file.xml" );
-            return;
-        }
-
         // read and parse XML document
         try
         {
@@ -61,21 +55,80 @@ public class XmlReader {
                 String nlistName = nlist.item(i).getNodeName();
                 if(!nlistName.equals("weather") && !nlistName.equals("#text"))
                 {
-                    throw new Exception("Missing weather tag");
+                    throw new Exception("Missing weather tag in XML");
                 }
                 // iterate through grandchild nodes
                 NodeList mlist = nlist.item( i ).getChildNodes();
+                String dateTemp = "";
+                String timeTemp = "";
                 for ( int j = 0; j < mlist.getLength(); j++ )
                 {
                     String mlistName = mlist.item(j).getNodeName();
                     if(!mlistName.equals("#text"))
                     {
-                        System.out.println( mlistName);
-                        // print node tag and value
                         NodeList klist = mlist.item( j ).getChildNodes();
                         if ( klist.getLength() > 0 )
                         {
-                            System.out.println( mlist.item( j ).getNodeName() + " = " + klist.item( 0 ).getNodeValue() );
+                            //System.out.println( mlist.item( j ).getNodeName() + " = " + klist.item( 0 ).getNodeValue() );
+                            
+                            switch(mlistName)
+                            {
+                                case "date":
+                                    if(timeTemp.equals(""))
+                                    {
+                                        dateTemp = klist.item(0).getNodeValue();
+                                    }
+                                    else
+                                    {
+                                        SimpleDateFormat dateFormatter = new SimpleDateFormat ("MM/dd/yy-h:mma");
+                                        System.out.println(dateFormatter.parse(klist.item(0).getNodeValue().trim() + "-" + timeTemp));
+                                    }                                    
+                                    break;
+                                case "time":
+                                    if(dateTemp.equals(""))
+                                    {
+                                        timeTemp = klist.item(0).getNodeValue().trim() + "M";
+                                    }
+                                    else
+                                    {
+                                        SimpleDateFormat dateFormatter = new SimpleDateFormat ("MM/dd/yy-h:mma");
+                                        System.out.println(dateFormatter.parse(dateTemp.trim() + "-" + klist.item(0).getNodeValue().trim() + "M"));
+                                    }
+                                    break;
+                                case "temperature":
+                                    System.out.println("TEMPERATURE");
+                                    break;
+                                case "humidity":
+                                    System.out.println("HUMIDITY");
+                                    break;
+                                case "barometer":
+                                    System.out.println("BAROM");
+                                    break;
+                                case "windspeed":
+                                    System.out.println("WS");
+                                    break;
+                                case "winddirection":
+                                    System.out.println("WD");
+                                    break;
+                                case "windgust":
+                                    System.out.println("WG");
+                                    break;
+                                case "windchill":
+                                    System.out.println("WC");
+                                    break;
+                                case "heatindex":
+                                    System.out.println("HI");
+                                    break;
+                                case "uvindex":
+                                    System.out.println("UV");
+                                    break;
+                                case "rainfall":
+                                    System.out.println("RAIN");
+                                    break;
+                                default:
+                                    //throw new Exception("Missing weather tag");
+                                    break;
+                            }
                         }
                     }
                 }
@@ -84,7 +137,9 @@ public class XmlReader {
         catch ( Exception e )
         {
             System.out.println( e.toString() );
+            return false;
         }
+        return true;
     }
     
 }

@@ -1,3 +1,6 @@
+
+import java.util.Date;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,7 +13,7 @@
  */
 public class weatherType{
 
-        private String dateTime; 
+        private Date dateTime; 
         private Float temperature;
         private Float humidity;
         private Float barometer;
@@ -36,11 +39,11 @@ public class weatherType{
         this.rainFall = 0.0f;
     }
     
-    public String getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(String dateTime) {
+    public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
     

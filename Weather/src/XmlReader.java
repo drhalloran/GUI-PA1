@@ -1,7 +1,5 @@
-
-
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
+import java.util.Date;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
 
@@ -16,23 +14,8 @@ import javax.xml.parsers.*;
  * @author 1748229
  */
 public class XmlReader {
-//    private String time;
-//    private Float temperature;
-//    private Float humidity;
-//    private Float barometer;
-//    private Float windspeed;
-//    private String windDirection;
-//    private Float windGust;
-//    private Float windChill;
-//    private Float headIndex;
-//    private Float uvIndex;
-//    private Float rainFall;
-      private HashMap WeatherData;
-
-    //Map<String, List<String>> = new HashMap<String, List<String>>();
     public void XmlReader()
     {
-        //HashMap WeatherData = new HashMap();
     }
     
     public boolean ReadFile( String filePath )
@@ -47,6 +30,7 @@ public class XmlReader {
             
             // iterate through child nodes
             NodeList nlist = document.getDocumentElement().getChildNodes();
+            weatherType weatherdata = new weatherType();
             for ( int i = 0; i < nlist.getLength(); i++ )
             {
                 String nlistName = nlist.item(i).getNodeName();
@@ -60,6 +44,7 @@ public class XmlReader {
                 //temporary variables used for combining date and time
                 String dateTemp = "";
                 String timeTemp = "";
+                
                 for ( int j = 0; j < mlist.getLength(); j++ )
                 {
                     //get current node name (date, humidty, temp, etc)
@@ -67,6 +52,7 @@ public class XmlReader {
                     //skip any text nodes
                     if(!mlistName.equals("#text"))
                     {
+                         
                         NodeList klist = mlist.item( j ).getChildNodes();
                         if ( klist.getLength() > 0 )
                         {
@@ -84,7 +70,8 @@ public class XmlReader {
                                     else
                                     {
                                         SimpleDateFormat dateFormatter = new SimpleDateFormat ("MM/dd/yy-h:mma");
-                                        System.out.println(dateFormatter.parse(klist.item(0).getNodeValue().trim() + "-" + timeTemp));
+                                        Date date = dateFormatter.parse(klist.item(0).getNodeValue().trim() + "-" + timeTemp);
+                                        weatherdata.setDateTime(date);
                                     }                                    
                                     break;
                                 case "time":
@@ -97,38 +84,39 @@ public class XmlReader {
                                     else
                                     {
                                         SimpleDateFormat dateFormatter = new SimpleDateFormat ("MM/dd/yy-h:mma");
-                                        System.out.println(dateFormatter.parse(dateTemp.trim() + "-" + klist.item(0).getNodeValue().trim() + "M"));
+                                        Date date = dateFormatter.parse(dateTemp.trim() + "-" + klist.item(0).getNodeValue().trim() + "M");
+                                        weatherdata.setDateTime(date);
                                     }
                                     break;
                                 case "temperature":
-                                    System.out.println("TEMPERATURE");
+                                    weatherdata.setTemperature(Float.parseFloat(klist.item(0).getNodeValue().trim()));
                                     break;
                                 case "humidity":
-                                    System.out.println("HUMIDITY");
+                                    weatherdata.setHumidity(Float.parseFloat(klist.item(0).getNodeValue().trim()));
                                     break;
                                 case "barometer":
-                                    System.out.println("BAROM");
+                                    weatherdata.setBarometer(Float.parseFloat(klist.item(0).getNodeValue().trim()));
                                     break;
                                 case "windspeed":
-                                    System.out.println("WS");
+                                    weatherdata.setWindspeed(Float.parseFloat(klist.item(0).getNodeValue().trim()));
                                     break;
                                 case "winddirection":
-                                    System.out.println("WD");
+                                    weatherdata.setWindDirection(klist.item(0).getNodeValue().trim());
                                     break;
                                 case "windgust":
-                                    System.out.println("WG");
+                                    weatherdata.setWindGust(Float.parseFloat(klist.item(0).getNodeValue().trim()));
                                     break;
                                 case "windchill":
-                                    System.out.println("WC");
+                                    weatherdata.setWindChill(Float.parseFloat(klist.item(0).getNodeValue().trim()));
                                     break;
                                 case "heatindex":
-                                    System.out.println("HI");
+                                    weatherdata.setHeadIndex(Float.parseFloat(klist.item(0).getNodeValue().trim()));
                                     break;
                                 case "uvindex":
-                                    System.out.println("UV");
+                                    weatherdata.setUvIndex(Float.parseFloat(klist.item(0).getNodeValue().trim()));
                                     break;
                                 case "rainfall":
-                                    System.out.println("RAIN");
+                                    weatherdata.setRainFall(Float.parseFloat(klist.item(0).getNodeValue().trim()));
                                     break;
                                 default:
                                     //throw new Exception("Missing weather tag");
@@ -136,6 +124,10 @@ public class XmlReader {
                             }
                         }
                     }
+                }
+                if(nlistName.equals("weather"))
+                {
+                    System.out.println("------------iteration----------");
                 }
             }
         }

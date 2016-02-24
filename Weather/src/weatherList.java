@@ -81,7 +81,7 @@ public class weatherList
         return 0f;
     }
     
-    public void cleanList()
+    public void clearList()
     {
         
     }

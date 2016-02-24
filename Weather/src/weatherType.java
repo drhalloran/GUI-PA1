@@ -123,5 +123,10 @@ public class weatherType{
     public void setRainFall(Float rainFall) {
         this.rainFall = rainFall;
     }
+    
+    public void clear()
+    {
+        
+    }
 
 }

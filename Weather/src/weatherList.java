@@ -17,14 +17,13 @@ import java.util.*;
 public class weatherList 
 {
     
-    private ArrayList<weatherType> weatherData = new ArrayList();
+    private Vector<weatherType> weatherData;
     private Date date = new Date();
-    
     
     //constructor
     public weatherList()
     {
-        
+        this.weatherData = new Vector<weatherType>();
     }
     //add object at the end of the list
     void insert(weatherType w)
@@ -33,13 +32,15 @@ public class weatherList
     }
     
     //sort the data by dates
-    public void sortList(ArrayList<weatherType> weatherData)
+    public void sortList()
     {
-        
+        //change
+        Collections.sort(this.weatherData);
     }
     
-    //data Range
-    public ArrayList<weatherType> getRange(Date begin, Date end, ArrayList<weatherType> dateRange)
+    
+    //date Range, from a sorted list
+    public weatherList getRange(Date begin, Date end, weatherList dateRange)
     {
         //change
         return dateRange;
@@ -47,42 +48,42 @@ public class weatherList
     
     
     //get avg temperature
-    public Float avgTemp(Date begin, Date end, ArrayList<weatherType> dataRange)
+    public Float avgTemp(ArrayList<weatherType> dataRange)
     {
         //change
         return 0f;
     }
     
-    public Float lowTemp(Date begin, Date end, ArrayList<weatherType> dataRange)
+    public Float lowTemp(ArrayList<weatherType> dataRange)
     {
         //change
         return 0f;
     }
     
-    public Float highTemp(Date begin, Date end, ArrayList<weatherType> dataRange)
+    public Float highTemp(ArrayList<weatherType> dataRange)
     {
         //change
         return 0f;
     }
     
     //get average wind speed
-    public Float avgWindSpeed(Date begin, Date end, ArrayList<weatherType> dataRange)
+    public Float avgWindSpeed(ArrayList<weatherType> dataRange)
     {
         return 0f;
     }
     
-    public Float windDirction(Date begin, Date end, ArrayList<weatherType> dataRange)
+    public Float windDirction(ArrayList<weatherType> dataRange)
     {
         return 0f;
     }
     
-    public Float rainfall(Date begin, Date end, ArrayList<weatherType> dataRange)
+    public Float rainfall(ArrayList<weatherType> dataRange)
     {
         return 0f;
     }
     
     public void clearList()
     {
-        
+        //empty list
     }
 }

@@ -1,3 +1,6 @@
+
+import java.util.Date;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,9 +11,9 @@
  *
  * @author yli23797
  */
-public class weatherType{
+public class weatherType implements Comparable<weatherType>{
 
-        private String dateTime; 
+        private Date dateTime; 
         private Float temperature;
         private Float humidity;
         private Float barometer;
@@ -36,18 +39,27 @@ public class weatherType{
         this.rainFall = 0.0f;
     }
     
-    public String getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
+    
+     
+    public int compareTo(weatherType a)
+    {
+        return this.getDateTime().compareTo(a.getDateTime());
+    }
 
-    public void setDateTime(String dateTime) {
+    public void setDateTime(Date dateTime) {
+        
+        //call destructor
+        //initialize new object
         this.dateTime = dateTime;
     }
     
     public Float getTemperature() {
         return temperature;
     }
-
+ 
     public void setTemperature(Float temperature) {
         this.temperature = temperature;
     }

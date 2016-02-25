@@ -40,44 +40,45 @@ public class weatherList
     
     
     //date Range, from a sorted list
-    public weatherList getRange(Date begin, Date end, weatherList dateRange)
+    public weatherList getRange(Date begin, Date end)
     {
+        weatherList dateRange = new weatherList();
         //change
         return dateRange;
     }
     
     
     //get avg temperature
-    public Float avgTemp(ArrayList<weatherType> dataRange)
+    public Float avgTemp()
     {
         //change
         return 0f;
     }
     
-    public Float lowTemp(ArrayList<weatherType> dataRange)
+    public Float lowTemp()
     {
         //change
         return 0f;
     }
     
-    public Float highTemp(ArrayList<weatherType> dataRange)
+    public Float highTemp()
     {
         //change
         return 0f;
     }
     
     //get average wind speed
-    public Float avgWindSpeed(ArrayList<weatherType> dataRange)
+    public Float avgWindSpeed()
     {
         return 0f;
     }
     
-    public Float windDirction(ArrayList<weatherType> dataRange)
+    public Float windDirction()
     {
         return 0f;
     }
     
-    public Float rainfall(ArrayList<weatherType> dataRange)
+    public Float rainfall()
     {
         return 0f;
     }

@@ -18,7 +18,6 @@ public class weatherList
 {
     
     public Vector<weatherType> weatherData;
-    private Date date = new Date();
     private int size;
     private float tolTemp;
     private float lowTemp;
@@ -35,12 +34,14 @@ public class weatherList
     }
     
 
-    public int getSize() {
+    public int getSize() 
+    {
        
         return size;
     }
 
-    public float getTolTemp() {
+    public float getTolTemp() 
+    {
         
         if(this.size == 0)
         {
@@ -50,7 +51,8 @@ public class weatherList
         return tolTemp;
     }
 
-    public float getLowTemp() {
+    public float getLowTemp() 
+    {
         if(this.size == 0)
         {
            System.out.println("WeatherList is empty, please enter some data");
@@ -59,7 +61,8 @@ public class weatherList
         return lowTemp;
     }
 
-    public float getHighTemp() {
+    public float getHighTemp() 
+    {
         if(this.size == 0)
         {
            System.out.println("WeatherList is empty, please enter some data"); 
@@ -68,7 +71,8 @@ public class weatherList
         return highTemp;
     }
     
-    public float getTolSpeed() {
+    public float getTolSpeed() 
+    {
         if(this.size == 0)
         {
            System.out.println("WeatherList is empty, please enter some data");
@@ -77,7 +81,8 @@ public class weatherList
         return tolSpeed;
     }
 
-    public float getMaxSpeed() {
+    public float getMaxSpeed() 
+    {
         if(this.size == 0)
         {
            System.out.println("WeatherList is empty, please enter some data");
@@ -86,7 +91,8 @@ public class weatherList
         return maxSpeed;
     }
 
-    public float getTolRainfall() {
+    public float getTolRainfall() 
+    {
         if(this.size == 0)
         {
            System.out.println("WeatherList is empty, please enter some data");
@@ -169,10 +175,5 @@ public class weatherList
         avg = this.tolSpeed/this.size;
         return avg;
     }
-    
-    //clear entire list
-    public void clearList()
-    {
-        this.size = 0;
-    }
+   
 }

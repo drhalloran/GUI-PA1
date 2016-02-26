@@ -14,19 +14,21 @@ import java.util.Date;
 public class weatherType implements Comparable<weatherType>{
 
         private Date dateTime; 
-        private Float temperature;
-        private Float humidity;
-        private Float barometer;
-        private Float windspeed; 
+        private float temperature;
+        private float humidity;
+        private float barometer;
+        private float windspeed; 
         private String windDirection;
-        private Float windGust;
-        private Float windChill;
-        private Float headIndex;
-        private Float uvIndex;
-        private Float rainFall;
+        private float windGust;
+        private float windChill;
+        private float headIndex;
+        private float uvIndex;
+        private float rainFall;
         
         
-    public weatherType(){
+    public weatherType()
+    {
+        this.dateTime = new Date();
         this.temperature = 0.0f;
         this.humidity = 0.0f;
         this.barometer = 0.0f;
@@ -41,12 +43,6 @@ public class weatherType implements Comparable<weatherType>{
     
     public Date getDateTime() {
         return dateTime;
-    }
-    
-     
-    public int compareTo(weatherType a)
-    {
-        return this.getDateTime().compareTo(a.getDateTime());
     }
 
     public void setDateTime(Date dateTime) {
@@ -136,10 +132,9 @@ public class weatherType implements Comparable<weatherType>{
         this.rainFall = rainFall;
     }
     
-    public void clear()
+    public int compareTo(weatherType a)
     {
-        
+        return this.getDateTime().compareTo(a.getDateTime());
     }
-
 }
 

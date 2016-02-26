@@ -33,10 +33,9 @@ public class weatherList
         this.weatherData = new Vector<weatherType>();
     }
     
-
+    
     public int getSize() 
     {
-       
         return size;
     }
 
@@ -102,7 +101,7 @@ public class weatherList
     }
     
     
-    //add object at the end of the list
+    //add an object at the end of the list, and update everything
     void insert(weatherType w)
     {
         this.size = this.size + 1;
@@ -153,6 +152,7 @@ public class weatherList
         return dateRange;
     }
     
+    //calculate average temp
     public float avgTemp()
     {
         if(this.size == 0)
@@ -164,6 +164,8 @@ public class weatherList
         avg = this.tolTemp/this.size;
         return avg;
     }
+    
+    //calculate avg speed
     public float avgSpeed()
     {
         if(this.size == 0)

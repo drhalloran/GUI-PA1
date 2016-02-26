@@ -17,7 +17,7 @@ import java.util.*;
 public class weatherList 
 {
     
-    private Vector<weatherType> weatherData;
+    public Vector<weatherType> weatherData;
     private Date date = new Date();
     private int size;
     private float tolTemp;
@@ -34,15 +34,6 @@ public class weatherList
         this.weatherData = new Vector<weatherType>();
     }
     
-    public Vector<weatherType> getWeatherData() 
-    {
-        
-        if(this.size == 0)
-        {
-           System.out.println("WeatherList is empty, please enter some data");
-        }
-        return weatherData;
-    }
 
     public int getSize() {
        
@@ -71,7 +62,7 @@ public class weatherList
     public float getHighTemp() {
         if(this.size == 0)
         {
-           System.out.println("WeatherList is empty, please enter some data");
+           System.out.println("WeatherList is empty, please enter some data"); 
            return -1f;
         }
         return highTemp;

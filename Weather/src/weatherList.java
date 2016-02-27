@@ -32,10 +32,10 @@ public class weatherList
     {
         this.size = 0;
         this.tolTemp = 0f;
-        this.lowTemp = 999999f;
-        this.highTemp = -1f;
+        this.lowTemp = Float.MAX_VALUE;
+        this.highTemp = Float.MIN_VALUE;
         this.tolSpeed = 0f;
-        this.maxSpeed = -1f;
+        this.maxSpeed = Float.MIN_VALUE;
         this.tolRainfall = 0f;
         this.windDir = new HashMap<String, Integer>();
         this.weatherData = new Vector<weatherType>();

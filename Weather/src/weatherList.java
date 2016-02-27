@@ -25,11 +25,18 @@ public class weatherList
     private float tolSpeed;
     private float maxSpeed;
     private float tolRainfall;
-    
+    private HashMap< String, Integer> windDir;    
     //constructor
     public weatherList()
     {
         this.size = 0;
+        this.tolTemp = 0f;
+        this.lowTemp = 999999f;
+        this.highTemp = -1f;
+        this.tolSpeed = 0f;
+        this.maxSpeed = -1f;
+        this.tolRainfall = 0f;
+        this.windDir = new HashMap<String, Integer>();
         this.weatherData = new Vector<weatherType>();
     }
     
@@ -123,6 +130,16 @@ public class weatherList
         {
             this.maxSpeed = w.getWindGust();
         }
+        
+        if (this.windDir.containsKey(w.getWindDirection()))
+        {
+            windDir.put(w.getWindDirection(), windDir.get(w.getWindDirection()) + 1 );
+        }
+        else
+        {
+            windDir.put(w.getWindDirection(), 0);
+        }
+        
         weatherData.add(w);
     }
     

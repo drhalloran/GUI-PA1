@@ -139,16 +139,37 @@ public class weatherList
     {
         weatherList dateRange = new weatherList();
         
-        for(int i = 0; i < this.size; i++)
+        int i = 0;
+        
+        //following are a binary search on the list based date
+        int mid = this.size/2;
+        int left = 0;
+        int right = this.size;
+        while (this.weatherData.get(mid).getDateTime().compareTo(begin) != 0)
         {
-            if(this.weatherData.get(i).getDateTime().compareTo(begin) >= 0
-                && this.weatherData.get(i).getDateTime().compareTo(begin) <= 0)
+            //update mid, left and right based its condition
+            if(this.weatherData.get(mid).getDateTime().compareTo(begin) > 0)
             {
-                dateRange.insert(this.weatherData.get(i));
+                mid = (left + mid)/2;
+                right = mid;
+                
             }
-            
+            else
+            {
+                mid = (mid + right)/2;
+                left = mid;
+            }
         }
         
+        //find the index
+        i = mid;
+        
+        //insert needed date to the list to the list
+        while(this.weatherData.get(i).getDateTime().compareTo(end) != 0)
+        {
+            dateRange.insert(this.weatherData.get(i));
+            i++;
+        }
         return dateRange;
     }
     

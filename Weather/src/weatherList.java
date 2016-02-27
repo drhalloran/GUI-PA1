@@ -148,7 +148,11 @@ public class weatherList
     //sort the data by dates
     public void sortList()
     {
-        
+        if(this.size == 0)
+        {
+           System.out.println("WeatherList is empty, please enter some data"); 
+           return;
+        }
         Collections.sort(this.weatherData);
     }
     
@@ -208,6 +212,11 @@ public class weatherList
     //get most prevailing wind Dir
     public String prevailWind()
     {
+        if(this.size == 0)
+        {
+           System.out.println("WeatherList is empty, please enter some data"); 
+           return "";
+        }
         int max = Collections.max(windDir.values());
         String maxEntry = "";
         for(Entry<String, Integer> entry: windDir.entrySet())

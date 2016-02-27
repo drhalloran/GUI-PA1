@@ -30,16 +30,16 @@ public class weatherType implements Comparable<weatherType>{
     public weatherType()
     {
         this.dateTime = new Date();
-        this.temperature = 0.0f;
-        this.humidity = 0.0f;
-        this.barometer = 0.0f;
-        this.windspeed = 0.0f;
-        this.windDirection = " ";
-        this.windGust = 0.0f;
-        this.windChill = 0.0f;
-        this.headIndex = 0.0f;
-        this.uvIndex = 0.0f;
-        this.rainFall = 0.0f;
+        this.temperature = Float.MAX_VALUE;
+        this.humidity = Float.MAX_VALUE;
+        this.barometer = Float.MAX_VALUE;
+        this.windspeed = Float.MAX_VALUE;
+        this.windDirection = "";
+        this.windGust = Float.MAX_VALUE;
+        this.windChill = Float.MAX_VALUE;
+        this.headIndex = Float.MAX_VALUE;
+        this.uvIndex = Float.MAX_VALUE;
+        this.rainFall = Float.MAX_VALUE;
     }
     
     public Date getDateTime() {

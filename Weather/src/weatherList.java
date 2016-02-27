@@ -163,7 +163,7 @@ public class weatherList
         //find the index
         i = mid;
         
-        //insert everything to the list
+        //insert needed date to the list to the list
         while(this.weatherData.get(i).getDateTime().compareTo(end) != 0)
         {
             dateRange.insert(this.weatherData.get(i));

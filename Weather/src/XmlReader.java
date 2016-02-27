@@ -19,7 +19,7 @@ public class XmlReader {
     {
     }
     
-    public boolean ReadFile( String filePath )
+    public boolean ReadFile( String filePath, weatherList ww)
     {
         // read and parse XML document
         try
@@ -31,9 +31,10 @@ public class XmlReader {
             
             // iterate through child nodes
             NodeList nlist = document.getDocumentElement().getChildNodes();
-            weatherType weatherdata = new weatherType();
+            weatherType weatherdata;
             for ( int i = 0; i < nlist.getLength(); i++ )
             {
+                weatherdata = new weatherType();
                 String nlistName = nlist.item(i).getNodeName();
                 //Check to make sure top xml node is weather or #text
                 if(!nlistName.equals("weather") && !nlistName.equals("#text"))
@@ -70,7 +71,7 @@ public class XmlReader {
                                     //If both time and date are available, combine strings and store to date object
                                     else
                                     {
-                                        SimpleDateFormat dateFormatter = new SimpleDateFormat ("MM/dd/yy-h:mma");
+                                        SimpleDateFormat dateFormatter = new SimpleDateFormat ("MM/dd/yy-h:mma", Locale.US);
                                         Date date = dateFormatter.parse(klist.item(0).getNodeValue().trim() + "-" + timeTemp);
                                         weatherdata.setDateTime(date);
                                     }                                    
@@ -129,7 +130,8 @@ public class XmlReader {
                 //finished parsing one XML node
                 if(nlistName.equals("weather"))
                 {
-                    weatherdata.updateList();
+                    //weatherdata.updateList();
+                    ww.insert(weatherdata);
                 }
             }
         }

@@ -1,5 +1,6 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
 
@@ -83,7 +84,7 @@ public class XmlReader {
                                     //If both time and date are available, combine strings and store to date object
                                     else
                                     {
-                                        SimpleDateFormat dateFormatter = new SimpleDateFormat ("MM/dd/yy-h:mma");
+                                        SimpleDateFormat dateFormatter = new SimpleDateFormat ("MM/dd/yy-h:mma", Locale.US);
                                         Date date = dateFormatter.parse(dateTemp.trim() + "-" + klist.item(0).getNodeValue().trim() + "M");
                                         weatherdata.setDateTime(date);
                                     }
@@ -125,9 +126,10 @@ public class XmlReader {
                         }
                     }
                 }
+                //finished parsing one XML node
                 if(nlistName.equals("weather"))
                 {
-                    System.out.println("------------iteration----------");
+                    weatherdata.updateList();
                 }
             }
         }

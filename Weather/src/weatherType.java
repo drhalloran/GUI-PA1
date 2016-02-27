@@ -24,6 +24,7 @@ public class weatherType implements Comparable<weatherType>{
         private float headIndex;
         private float uvIndex;
         private float rainFall;
+        weatherList weatherList = new weatherList();
         
         
     public weatherType()
@@ -135,6 +136,11 @@ public class weatherType implements Comparable<weatherType>{
     public int compareTo(weatherType a)
     {
         return this.getDateTime().compareTo(a.getDateTime());
+    }
+    
+    public void updateList()
+    {
+        weatherList.insert(this);
     }
 }
 

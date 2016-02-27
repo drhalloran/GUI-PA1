@@ -131,6 +131,7 @@ public class weatherList
             this.maxSpeed = w.getWindGust();
         }
         
+        //add windDir to the map and increment counter
         if (this.windDir.containsKey(w.getWindDirection()))
         {
             windDir.put(w.getWindDirection(), windDir.get(w.getWindDirection()) + 1 );
@@ -201,6 +202,14 @@ public class weatherList
         float avg = 0f;
         avg = this.tolTemp/this.size;
         return avg;
+    }
+    
+    //get most prevailing wind Dir
+    public int prevailWind()
+    {
+        int max = 0;
+        max = Collections.max(this.windDir.values());
+        return max;
     }
     
     //calculate avg speed

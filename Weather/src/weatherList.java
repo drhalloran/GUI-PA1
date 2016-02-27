@@ -150,13 +150,14 @@ public class weatherList
             //update mid, left and right based its condition
             if(this.weatherData.get(mid).getDateTime().compareTo(begin) > 0)
             {
-                mid = (mid + right)/2;
-                left = mid;
+                mid = (left + mid)/2;
+                right = mid;
+                
             }
             else
             {
-                mid = (left + mid)/2;
-                right = mid;
+                mid = (mid + right)/2;
+                left = mid;
             }
         }
         

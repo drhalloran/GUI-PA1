@@ -9,6 +9,7 @@
  */
 
 import java.util.*;
+import java.util.Map.Entry;
 
 /**
  *
@@ -205,11 +206,18 @@ public class weatherList
     }
     
     //get most prevailing wind Dir
-    public int prevailWind()
+    public String prevailWind()
     {
-        int max = 0;
-        max = Collections.max(this.windDir.values());
-        return max;
+        int max = Collections.max(windDir.values());
+        String maxEntry = "";
+        for(Entry<String, Integer> entry: windDir.entrySet())
+        {
+            if(entry.getValue() == max)
+            {
+                maxEntry = entry.getKey();
+            }
+        }
+        return maxEntry;
     }
     
     //calculate avg speed

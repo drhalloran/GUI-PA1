@@ -350,7 +350,7 @@ public class WeatherFrame extends javax.swing.JFrame {
             for (int i = 0; i < ww.getWeatherData().size(); i++)
             {
                 //  System.out.println(ww.weatherData.get(i).getDateTime());
-                timeSeries.addOrUpdate(new Day(ww.getWeatherData().get(i).getDateTime()), ww.getWeatherData().get(i).getTemperature());
+                timeSeries.addOrUpdate(new Day(ww.getWeatherData().get(i).getDateTime()), ww.getWeatherData() .get(i).getTemperature());
             }
             TempSet.addSeries(timeSeries);
         }

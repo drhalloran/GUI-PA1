@@ -122,7 +122,7 @@ public class weatherList
     }
 
 /************************************************************************
-   Function:    getLowTemp()  
+   Function:    getHighTemp()  
    Author:      Yanlin Li
    Description: get max temp for the list
    Parameters:
@@ -137,7 +137,12 @@ public class weatherList
         }
         return highTemp;
     }
-    
+/************************************************************************
+   Function:    getTolTemp()  
+   Author:      Yanlin Li
+   Description: get total temp for the list
+   Parameters:
+ ************************************************************************/
     public float getTolSpeed() 
     {
         //check if the list is empty
@@ -148,7 +153,12 @@ public class weatherList
         }
         return tolSpeed;
     }
-
+/************************************************************************
+   Function:    getMaxSpeed()  
+   Author:      Yanlin Li
+   Description: get max Speed for the list
+   Parameters:
+ ************************************************************************/
     public float getMaxSpeed() 
     {
         if(this.size == 0)
@@ -158,7 +168,12 @@ public class weatherList
         }
         return maxSpeed;
     }
-
+/************************************************************************
+   Function:    getTolRainfall()  
+   Author:      Yanlin Li
+   Description: get total rainfall for the list
+   Parameters:
+ ************************************************************************/
     public float getTolRainfall() 
     {
         if(this.size == 0)
@@ -170,7 +185,15 @@ public class weatherList
     }
     
     
-    //add an object at the end of the list, and update everything
+ /************************************************************************
+   Function:    insert(weatherType w)  
+   Author:      Yanlin Li
+   Description: Insert a element into the list, and update corresponding 
+                parameters
+   Parameters:
+   *            input: weatherType
+   *            output: Nothing
+ ************************************************************************/
     void insert(weatherType w)
     {
         //increment the size when an element is inserted
@@ -214,7 +237,13 @@ public class weatherList
         weatherData.add(w);
     }
     
-    //sort the data by dates
+/************************************************************************
+   Function:    insert(weatherType w)  
+   Author:      Yanlin Li
+   Description: sort the data by dates
+   Parameters:
+ ************************************************************************/
+    
     public void sortList()
     {
         //check if the list is empty
@@ -223,11 +252,20 @@ public class weatherList
            System.out.println("WeatherList is empty, please enter some data"); 
            return;
         }
+        //sort the list
         Collections.sort(this.weatherData);
     }
     
-    
-    //date Range, from a sorted list
+/************************************************************************
+   Function:    insert(weatherType w)  
+   Author:      Yanlin Li
+   Description: Get a list of data from a corresponding period. This function
+   *            uses binary search 
+   Parameters:
+   *            input: Date begin   -begin date
+   *                   Date end     -end date
+   *            output: weatherList -a list of weatherType that in the date range
+ ************************************************************************/
     public weatherList getRange(Date begin, Date end)
     {
         //initialize the list 
@@ -288,7 +326,13 @@ public class weatherList
         return avg;
     }
     
-    //get most prevailing wind Dir
+ /************************************************************************
+   Function:    prevailWind()  
+   Author:      Yanlin Li
+   Description: find the frequently appeared wind direction
+   Parameters:
+   *            Output: String -most frequent appeared wind direction
+ ************************************************************************/
     public String prevailWind()
     {
         //check if the list is empty 
@@ -302,6 +346,8 @@ public class weatherList
         //get maximum entry 
         int max = Collections.max(windDir.values());
         String maxEntry = "";
+        
+        //walk though the map, and find the entry
         for(Entry<String, Integer> entry: windDir.entrySet())
         {
             if(entry.getValue() == max)
@@ -312,6 +358,12 @@ public class weatherList
         return maxEntry;
     }
     
+/************************************************************************
+   Function:    avgSpeed()  
+   Author:      Yanlin Li
+   Description: find the average wind speed 
+   Parameters:
+ ************************************************************************/
     //calculate avg speed
     public float avgSpeed()
     {

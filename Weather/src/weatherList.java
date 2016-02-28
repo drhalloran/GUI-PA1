@@ -1,12 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- * todo list: 
- *   constructor
- *   range of dates
- *   avg function
- */
+ /************************************************************************
+   Program:     Weather Station Display
+   Author:      Daniel Halloran， Dicheng Wu and Yanlin Li
+   Class:       CSC-468 -  GUI Programming 
+   Instructor:  Dr.Weiss
+   Date:        March 1st, 2016
+   Description:    
+   Input:
+   Output:
+   Compilation instructions:
+   Usage:
+   Known bugs/missing features:
+   Modifications:
+   Date                Comment            
+   ----    ------------------------------------------------
+ ************************************************************************/
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -18,7 +25,7 @@ import java.util.Map.Entry;
 public class weatherList 
 {
     
-    public Vector<weatherType> weatherData;
+    private Vector<weatherType> weatherData;
     private int size;
     private float tolTemp;
     private float lowTemp;
@@ -26,7 +33,9 @@ public class weatherList
     private float tolSpeed;
     private float maxSpeed;
     private float tolRainfall;
-    private HashMap< String, Integer> windDir;    
+    private HashMap< String, Integer> windDir;   
+    
+    
     //constructor
     public weatherList()
     {
@@ -41,6 +50,11 @@ public class weatherList
         this.weatherData = new Vector<weatherType>();
     }
     
+    
+    public Vector<weatherType> getWeatherData() 
+    {
+        return weatherData;
+    }
     
     public int getSize() 
     {
@@ -60,6 +74,7 @@ public class weatherList
 
     public float getLowTemp() 
     {
+        //check if the list is empty
         if(this.size == 0)
         {
            System.out.println("WeatherList is empty, please enter some data");
@@ -70,6 +85,7 @@ public class weatherList
 
     public float getHighTemp() 
     {
+        //check if the list is empty 
         if(this.size == 0)
         {
            System.out.println("WeatherList is empty, please enter some data"); 
@@ -80,6 +96,7 @@ public class weatherList
     
     public float getTolSpeed() 
     {
+        //check if the list is empty
         if(this.size == 0)
         {
            System.out.println("WeatherList is empty, please enter some data");
@@ -112,21 +129,28 @@ public class weatherList
     //add an object at the end of the list, and update everything
     void insert(weatherType w)
     {
+        //increment the size when an element is inserted
         this.size = this.size + 1;
+        //increment total temp
         this.tolTemp += w.getTemperature();
+        //increment total wind speed
         this.tolSpeed += w.getWindspeed();
+        //increment total rain fall
         this.tolRainfall +=w.getRainFall();
         
+        //update max temp
         if(w.getTemperature() > this.highTemp )
         {
             this.highTemp = w.getTemperature();
         }
         
-        
+        //update low temp
         if(w.getTemperature() < this.lowTemp )
         {
             this.lowTemp = w.getTemperature();
         }
+        
+        //update max speed
         if (w.getWindGust() > this.maxSpeed)
         {
             this.maxSpeed = w.getWindGust();
@@ -142,12 +166,14 @@ public class weatherList
             windDir.put(w.getWindDirection(), 0);
         }
         
+        //insert weatherType to the list
         weatherData.add(w);
     }
     
     //sort the data by dates
     public void sortList()
     {
+        //check if the list is empty
         if(this.size == 0)
         {
            System.out.println("WeatherList is empty, please enter some data"); 
@@ -160,14 +186,18 @@ public class weatherList
     //date Range, from a sorted list
     public weatherList getRange(Date begin, Date end)
     {
+        //initialize the list 
         weatherList dateRange = new weatherList();
         
+        //temp variable
         int i = 0;
         
         //following are a binary search on the list based date
         int mid = this.size/2;
         int left = 0;
         int right = this.size;
+        
+        //loop for binary search 
         while (this.weatherData.get(mid).getDateTime().compareTo(begin) != 0)
         {
             //update mid, left and right based its condition
@@ -199,24 +229,33 @@ public class weatherList
     //calculate average temp
     public float avgTemp()
     {
+        //check if the list is empty 
         if(this.size == 0)
         {
            System.out.println("WeatherList is empty, please enter some data");
            return -1f;
         }
+        //temp variable
         float avg = 0f;
+        //get avg temp
         avg = this.tolTemp/this.size;
+        
+        
         return avg;
     }
     
     //get most prevailing wind Dir
     public String prevailWind()
     {
+        //check if the list is empty 
         if(this.size == 0)
         {
            System.out.println("WeatherList is empty, please enter some data"); 
            return "";
         }
+        
+        
+        //get maximum entry 
         int max = Collections.max(windDir.values());
         String maxEntry = "";
         for(Entry<String, Integer> entry: windDir.entrySet())

@@ -4,21 +4,28 @@ import java.util.Locale;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
 
-    /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author 1748229
- */
 public class XmlReader {
     public void XmlReader()
     {
     }
     
+ /******************************************************************************
+ * Function Name: ReadFile
+ * 
+ * Description: Reads in a single XML file of weather data and then stores the
+ * appropriate data by using setters in the weatherType class and then inserting
+ * each node of XML data into the weatherList class. The function has basic
+ * error checking to make sure the correct tags are in the XML file, it also 
+ * handles unordered or missing weather data tags
+ * 
+ * Author: Daniel Halloran (parts of DocumentBuilder and loops based on class
+ * example code)
+ * 
+ * Parameters: filePath - string of absolute path to the XML file to be read in
+ * weatherList ww - reference to weatherList object used to store the data
+ * 
+ * Return: True on success, otherwise false on failure
+ ******************************************************************************/
     public boolean ReadFile( String filePath, weatherList ww)
     {
         // read and parse XML document

@@ -1,3 +1,6 @@
+/*
+    This is class read Xml file
+*/
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;

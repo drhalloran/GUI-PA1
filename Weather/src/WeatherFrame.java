@@ -347,10 +347,10 @@ public class WeatherFrame extends javax.swing.JFrame {
             for (int i = 0; i < file.length; i++)
                 filereader.ReadFile(file[i].getAbsoluteFile().toString(), ww);
             ww.sortList();
-            for (int i = 0; i < ww.weatherData.size(); i++)
+            for (int i = 0; i < ww.getWeatherData().size(); i++)
             {
                 //  System.out.println(ww.weatherData.get(i).getDateTime());
-                timeSeries.addOrUpdate(new Day(ww.weatherData.get(i).getDateTime()), ww.weatherData.get(i).getTemperature());
+                timeSeries.addOrUpdate(new Day(ww.getWeatherData().get(i).getDateTime()), ww.getWeatherData().get(i).getTemperature());
             }
             TempSet.addSeries(timeSeries);
         }

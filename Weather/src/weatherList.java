@@ -1,20 +1,32 @@
  /************************************************************************
-   Program:     Weather Station Display
-   Author:      Daniel Halloran， Dicheng Wu and Yanlin Li
-   Class:       CSC-468 -  GUI Programming 
-   Instructor:  Dr.Weiss
-   Date:        March 1st, 2016
-   Description:    
-   Input:
-   Output:
-   Compilation instructions:
-   Usage:
-   Known bugs/missing features:
-   Modifications:
-   Date                Comment            
-   ----    ------------------------------------------------
+*  Program:     Weather Station Display
+*  Author:      Daniel Halloran， Dicheng Wu and Yanlin Li
+*  Class:       CSC-468 -  GUI Programming 
+*  Instructor:  Dr.Weiss
+*  Date:        March 1st, 2016
+*  Description: Weather impacts many aspects of our daily lives: where we choose 
+*               to live, the activities we participate in, how we dress, the 
+*               food we eat, conversation topics, etc. Sophisticated personal
+*               weather stations are available for home use at reasonable 
+*               prices, and can be connected to web based worldwide live weather 
+*               station networks. Weather station hardware includes sensors for
+*               temperature, humidity, barometric pressure, wind speed and 
+*               direction, rainfall, and other weather related measurements. 
+*               This data may be logged to a computer for analysis and display.
+*  Input:       Weather Data, mouse event and keyboard event
+*  Output:      Graphs that corresponding to the events that user choose
+*  Compilation instructions:    Run in NetBeans
+*  Usage:       Check for yearly/monthly/weekly/daily weather statistics and 
+*               show graphic representation for corresponding time periods.
+*
+*  Known bugs/missing features: 
+*  
  ************************************************************************/
 
+/*
+*   This is a container class for weather type. This class also have some 
+*   build in functions.
+*/
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -25,15 +37,16 @@ import java.util.Map.Entry;
 public class weatherList 
 {
     
-    private Vector<weatherType> weatherData;
-    private int size;
-    private float tolTemp;
-    private float lowTemp;
-    private float highTemp;
-    private float tolSpeed;
-    private float maxSpeed;
-    private float tolRainfall;
-    private HashMap< String, Integer> windDir;   
+    
+    private Vector<weatherType> weatherData;    //list that stores weatherType
+    private int size;                           //variable that keep track size of the list
+    private float tolTemp;                      //variable keep track toltal temperature
+    private float lowTemp;                      //stores the low temp for the list
+    private float highTemp;                     //stores high temp for the list
+    private float tolSpeed;                     //stores total speed for the list
+    private float maxSpeed;                     //stores max speed for the list
+    private float tolRainfall;                  //stores the total rainfall
+    private HashMap< String, Integer> windDir;  //map that keep track which is most frenquent appreaed widn direction
     
     
     //constructor
@@ -51,16 +64,34 @@ public class weatherList
     }
     
     
+/************************************************************************
+   Function:    getWeatherData()  
+   Author:      Yanlin Li
+   Description: get weather  list
+   Parameters:
+ ************************************************************************/
     public Vector<weatherType> getWeatherData() 
     {
         return weatherData;
     }
     
+/************************************************************************
+   Function:    getSize()  
+   Author:      Yanlin Li
+   Description: get the list of the list
+   Parameters:
+ ************************************************************************/
     public int getSize() 
     {
         return size;
     }
 
+/************************************************************************
+   Function:    getTolTemp()  
+   Author:      Yanlin Li
+   Description: get total temp for the list
+   Parameters:
+ ************************************************************************/
     public float getTolTemp() 
     {
         
@@ -72,6 +103,13 @@ public class weatherList
         return tolTemp;
     }
 
+    
+/************************************************************************
+   Function:    getLowTemp()  
+   Author:      Yanlin Li
+   Description: get minium temp for the list
+   Parameters:
+ ************************************************************************/
     public float getLowTemp() 
     {
         //check if the list is empty
@@ -83,6 +121,12 @@ public class weatherList
         return lowTemp;
     }
 
+/************************************************************************
+   Function:    getLowTemp()  
+   Author:      Yanlin Li
+   Description: get max temp for the list
+   Parameters:
+ ************************************************************************/
     public float getHighTemp() 
     {
         //check if the list is empty 
